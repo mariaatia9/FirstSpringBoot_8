@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="highlightError">red bold</Property>
+        <Property name="highlightWarn">yellow bold</Property>
+        <Property name="highlightInfo">green bold</Property>
+        <Property name="highlightDebug">cyan</Property>
+        <Property name="highlightTrace">blue</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{[%-5level]}{FATAL=red blink, ERROR=${highlightError}, WARN=${highlightWarn}, INFO=${highlightInfo}, DEBUG=${highlightDebug}, TRACE=${highlightTrace}} %d{yyyy-MM-dd HH:mm:ss} [%t] %logger{36} - %msg%n%throwable"/>
+        </Console>
+        <!-- Optional: File Appender für normale Logs ohne Farben -->
+        <File name="File" fileName="logs/app.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
